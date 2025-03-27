@@ -14,7 +14,7 @@ export default function Error({ error, reset }) {
     <div className="error-container">
       <div className="error-content">
         <h1>Something went wrong</h1>
-        <p>We're sorry, but there was an error loading this page.</p>
+        <p>Sorry, but there was an error loading this page.</p>
         <div className="error-actions">
           <button onClick={() => reset()} className="btn">
             Try again

@@ -103,7 +103,7 @@ export default function Home() {
             <div className="testimonial-card">
               <div className="testimonial-content">
                 <p>
-                  "The trip to Bali was amazing! Everything was well organized and the accommodations were excellent."
+                &quot;The trip to Bali was amazing! Everything was well organized and the accommodations were excellent.&quot;
                 </p>
               </div>
               <div className="testimonial-author">
@@ -114,8 +114,8 @@ export default function Home() {
             <div className="testimonial-card">
               <div className="testimonial-content">
                 <p>
-                  "Our family trip to Egypt was unforgettable. The guides were knowledgeable and the itinerary was
-                  perfect."
+                &quot;Our family trip to Egypt was unforgettable. The guides were knowledgeable and the itinerary was
+                  perfect.&quot;
                 </p>
               </div>
               <div className="testimonial-author">
@@ -125,7 +125,7 @@ export default function Home() {
             </div>
             <div className="testimonial-card">
               <div className="testimonial-content">
-                <p>"The customized trip to Japan exceeded all our expectations. Every detail was taken care of!"</p>
+                <p>&quot;The customized trip to Japan exceeded all our expectations. Every detail was taken care of!&quot;</p>
               </div>
               <div className="testimonial-author">
                 <div className="author-name">Amit Verma</div>

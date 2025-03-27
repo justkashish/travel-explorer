@@ -1,0 +1,245 @@
+.customize-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.customize-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.step {
+    padding: 1rem 0;
+}
+
+.step h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+.step h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+}
+
+.step p {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #666;
+}
+
+.search-box {
+    margin-bottom: 2rem;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.destinations-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.destination-item {
+    padding: 1rem;
+    background-color: var(--light-gray);
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.destination-item:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-2px);
+}
+
+.days-selector {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.days-option {
+    padding: 1rem 2rem;
+    background-color: var(--light-gray);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.days-option:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-2px);
+}
+
+.days-option.selected {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.travel-group-selector {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.group-option {
+    width: 120px;
+    padding: 1.5rem 1rem;
+    background-color: var(--light-gray);
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.group-option:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-2px);
+}
+
+.group-option.selected {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.group-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.room-config {
+    max-width: 400px;
+    margin: 0 auto 2rem;
+}
+
+.config-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.counter {
+    display: flex;
+    align-items: center;
+}
+
+.counter button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.counter button:hover:not(:disabled) {
+    background-color: var(--light-gray);
+}
+
+.counter button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.counter span {
+    margin: 0 1rem;
+    min-width: 20px;
+    text-align: center;
+}
+
+.step-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.confirmation-step {
+    text-align: center;
+}
+
+.confirmation-content {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.confirmation-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.trip-summary {
+    margin: 2rem 0;
+    text-align: left;
+    background-color: var(--light-gray);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.trip-summary h3 {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.trip-summary ul {
+    list-style: none;
+}
+
+.trip-summary li {
+    margin-bottom: 0.5rem;
+}
+
+.confirmation-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+    .customize-container {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+    .travel-group-selector {
+        gap: 1rem;
+    }
+    .group-option {
+        width: 100px;
+    }
+    .confirmation-actions {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}

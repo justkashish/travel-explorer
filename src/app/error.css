@@ -1,0 +1,39 @@
+.error-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+}
+
+.error-content {
+    text-align: center;
+    padding: 2rem;
+    max-width: 500px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.error-content h1 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.error-content p {
+    margin-bottom: 2rem;
+    color: #666;
+}
+
+.error-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+@media (max-width: 768px) {
+    .error-actions {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}

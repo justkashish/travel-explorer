@@ -1,95 +1,143 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client"
+
+import { useState, useEffect } from "react"
+import Navbar from "../components/Navbar"
+import Footer from "../components/Footer"
+import BannerCarousel from "../components/BannerCarousel"
+import DestinationCard from "../components/DestinationCard"
+import { fetchBanners, fetchFeaturedDestinations } from "../utils/api"
+import "./page.css"
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [banners, setBanners] = useState([])
+  const [destinations, setDestinations] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const bannersData = await fetchBanners()
+        const destinationsData = await fetchFeaturedDestinations()
+
+        console.log("Banners Data :", bannersData);
+        setBanners(Array.isArray(bannersData) ? bannersData : [])
+        setDestinations(Array.isArray(destinationsData) ? destinationsData : [])
+        setIsLoading(false)
+      } catch (error) {
+        console.error("Error fetching data:", error)
+        setBanners([])
+        setDestinations([])
+        setIsLoading(false)
+      }
+    }
+
+    fetchData()
+  }, [])
+
+  if (isLoading) {
+    return (
+      <div className="loading">
+        <div className="spinner"></div>
+        <p>Loading amazing destinations...</p>
+      </div>
+    )
+  }
+
+  return (
+    <div className="home-page">
+      <Navbar />
+
+      {/* <section className="banner-section">
+        <BannerCarousel banners={banners} />
+      </section> */}
+
+      <section className="destinations-section">
+        <div className="container">
+          <h2 className="section-title">Popular Destinations</h2>
+          <div className="destinations-grid">
+            {Array.isArray(destinations) && destinations.length > 0 ? (
+              destinations.map((destination, index) => (
+                <DestinationCard key={destination.id || index} destination={destination} />
+              ))
+            ) : (
+              <div className="no-destinations">
+                <p>No destinations available at the moment. Please check back later.</p>
+              </div>
+            )}
+          </div>
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      <section className="features-section">
+        <div className="container">
+          <h2 className="section-title">Why Choose Us</h2>
+          <div className="features-grid">
+            <div className="feature-card">
+              <div className="feature-icon">🌟</div>
+              <h3>Personalized Itineraries</h3>
+              <p>Customize every aspect of your trip to match your preferences and interests.</p>
+            </div>
+            <div className="feature-card">
+              <div className="feature-icon">💰</div>
+              <h3>Best Price Guarantee</h3>
+              <p>We offer competitive prices and match any lower price you find elsewhere.</p>
+            </div>
+            <div className="feature-card">
+              <div className="feature-icon">🛡️</div>
+              <h3>Safe & Secure</h3>
+              <p>Your safety is our priority with 24/7 support during your travels.</p>
+            </div>
+            <div className="feature-card">
+              <div className="feature-icon">👨‍👩‍👧‍👦</div>
+              <h3>Expert Travel Guides</h3>
+              <p>Our experienced guides ensure you have the best experience possible.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="testimonials-section">
+        <div className="container">
+          <h2 className="section-title">What Our Travelers Say</h2>
+          <div className="testimonials-grid">
+            <div className="testimonial-card">
+              <div className="testimonial-content">
+                <p>
+                  "The trip to Bali was amazing! Everything was well organized and the accommodations were excellent."
+                </p>
+              </div>
+              <div className="testimonial-author">
+                <div className="author-name">Rahul Sharma</div>
+                <div className="author-trip">Bali Adventure</div>
+              </div>
+            </div>
+            <div className="testimonial-card">
+              <div className="testimonial-content">
+                <p>
+                  "Our family trip to Egypt was unforgettable. The guides were knowledgeable and the itinerary was
+                  perfect."
+                </p>
+              </div>
+              <div className="testimonial-author">
+                <div className="author-name">Priya Patel</div>
+                <div className="author-trip">Egypt Explorer</div>
+              </div>
+            </div>
+            <div className="testimonial-card">
+              <div className="testimonial-content">
+                <p>"The customized trip to Japan exceeded all our expectations. Every detail was taken care of!"</p>
+              </div>
+              <div className="testimonial-author">
+                <div className="author-name">Amit Verma</div>
+                <div className="author-trip">Japan Discovery</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
     </div>
-  );
+  )
 }
+

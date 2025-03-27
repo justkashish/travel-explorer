@@ -1,0 +1,109 @@
+.banner-carousel {
+    height: 100%;
+    position: relative;
+}
+
+.banner-slide {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.banner-slide::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.banner-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    width: 80%;
+    max-width: 800px;
+}
+
+.banner-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.banner-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.search-container {
+    display: flex;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-container input {
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    font-size: 1rem;
+}
+
+.search-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0 1.5rem;
+    border-radius: 0 4px 4px 0;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.banner-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.indicator.active {
+    background-color: white;
+}
+
+@media (max-width: 768px) {
+    .banner-content h1 {
+        font-size: 2rem;
+    }
+    .banner-content p {
+        font-size: 1rem;
+    }
+    .search-container {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .search-container input {
+        border-radius: 4px;
+    }
+    .search-btn {
+        border-radius: 4px;
+        padding: 0.8rem;
+    }
+}

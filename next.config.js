@@ -6,7 +6,9 @@ const nextConfig = {
             protocol: "https",
             hostname: "**", // ✅ Allow all external images (if needed)
         }, ],
+        unoptimized: true,
     },
+    output: "standalone",
 };
 
 module.exports = nextConfig;

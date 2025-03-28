@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 import BannerCarousel from "../components/BannerCarousel"
 import DestinationCard from "../components/DestinationCard"
+import RegisterSW from "./register-sw"
 import { fetchBanners, fetchFeaturedDestinations } from "../utils/api"
 import "./page.css"
 
@@ -17,11 +18,9 @@ export default function Home() {
     const fetchData = async () => {
       try {
         const bannersData = await fetchBanners()
-        const destinationsData = await fetchFeaturedDestinations()
-
-        console.log("Banners Data :", bannersData);
-        setBanners(Array.isArray(bannersData) ? bannersData : [])
-        setDestinations(Array.isArray(destinationsData) ? destinationsData : [])
+        const destinationsData = await fetchFeaturedDestinations()  
+        setBanners(Array.isArray(bannersData) ? bannersData : []);
+        setDestinations(Array.isArray(destinationsData) ? destinationsData : []);     
         setIsLoading(false)
       } catch (error) {
         console.error("Error fetching data:", error)
@@ -45,11 +44,12 @@ export default function Home() {
 
   return (
     <div className="home-page">
+      <RegisterSW />
       <Navbar />
 
-      {/* <section className="banner-section">
+      <section className="banner-section">
         <BannerCarousel banners={banners} />
-      </section> */}
+      </section>
 
       <section className="destinations-section">
         <div className="container">

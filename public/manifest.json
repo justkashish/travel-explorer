@@ -1,0 +1,20 @@
+{
+    "name": "Travel Explorer",
+    "short_name": "Travel",
+    "description": "Discover amazing destinations around the world",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#0070f3",
+    "icons": [{
+            "src": "/icons/travel.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/travel.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

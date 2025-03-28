@@ -19,6 +19,14 @@
     gap: 2rem;
 }
 
+.no-destinations {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--light-gray);
+    border-radius: 8px;
+}
+
 .features-section {
     padding: 4rem 0;
     background-color: var(--light-gray);
